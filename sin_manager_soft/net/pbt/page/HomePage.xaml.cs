@@ -44,32 +44,38 @@ namespace sin_manager_soft.net.pbt.page
             PageItem albumItem = new PageItem
             {
                 Header = _resourceLoader.GetString(ResourceKey.ALBUM_VIEW_KEY),
-                Page = typeof(AlbumPage)
+                Page = typeof(AlbumPage),
+                IsEnabled = false
             };
             PageItem productItem = new PageItem
             {
                 Header = _resourceLoader.GetString(ResourceKey.PRODUCT_VIEW_KEY),
-                Page = typeof(ProductPage)
+                Page = typeof(ProductPage),
+                IsEnabled = true
             };
             PageItem songItem = new PageItem
             {
                 Header = _resourceLoader.GetString(ResourceKey.SONG_VIEW_KEY),
-                Page = typeof(SongPage)
+                Page = typeof(SongPage),
+                IsEnabled = false
             };
             PageItem artistItem = new PageItem
             {
                 Header = _resourceLoader.GetString(ResourceKey.ARTIST_VIEW_KEY),
-                Page = typeof(ArtistPage)
+                Page = typeof(ArtistPage),
+                IsEnabled = false
             };
             PageItem editorItem = new PageItem
             {
                 Header = _resourceLoader.GetString(ResourceKey.EDITOR_VIEW_KEY),
-                Page = typeof(EditorPage)
+                Page = typeof(EditorPage),
+                IsEnabled = false
             };
             PageItem mailServiceItem = new PageItem
             {
                 Header = _resourceLoader.GetString(ResourceKey.MAIL_VIEW_KEY),
-                Page = typeof(MailServicePage)
+                Page = typeof(MailServicePage),
+                IsEnabled = false
             };
             _gridViewItems.Add(albumItem);
             _gridViewItems.Add(songItem);
@@ -91,6 +97,12 @@ namespace sin_manager_soft.net.pbt.page
             frame.Navigate(clicked.Page, _tabView);
             _tabView.TabItems.Add(item);
             _tabView.SelectedItem = item;
+        }
+
+        private void GridViewContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        {
+            PageItem item = args.Item as PageItem;
+            args.ItemContainer.IsEnabled = item.IsEnabled;
         }
     }
 }

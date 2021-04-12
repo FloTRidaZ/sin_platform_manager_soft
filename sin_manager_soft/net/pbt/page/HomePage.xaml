@@ -15,7 +15,8 @@
             ItemsSource="{x:Bind _gridViewItems}"
             SelectionMode="None"
             IsItemClickEnabled="True"
-            ItemClick="GridViewItemClick">
+            ItemClick="GridViewItemClick"
+            ContainerContentChanging="GridViewContainerContentChanging">
             <GridView.ItemTemplate>
                 <DataTemplate
                     x:DataType="essences:PageItem">

@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using muxc = Microsoft.UI.Xaml.Controls;
 using Windows.ApplicationModel.Resources;
 using sin_manager_soft.net.pbt.strings;
+using sin_manager_soft.net.pbt.dialog;
 
 namespace sin_manager_soft.net.pbt.page
 {
@@ -54,6 +55,13 @@ namespace sin_manager_soft.net.pbt.page
         private void TabViewLoaded(object sender, RoutedEventArgs e)
         {
             CreateNewTab(sender as muxc.TabView);
+        }
+
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            AuthorizationDialog dialog = new AuthorizationDialog();
+            await dialog.ShowAsync();
         }
     }
 }

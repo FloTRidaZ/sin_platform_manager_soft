@@ -119,6 +119,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="net\pbt\dialog\AuthorizationDialog.xaml.cs">
+      <DependentUpon>AuthorizationDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="net\pbt\essences\PageItem.cs" />
     <Compile Include="net\pbt\sql\sqlessences\Picture.cs" />
     <Compile Include="net\pbt\sql\sqlessences\Product.cs" />
@@ -181,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="net\pbt\dialog\AuthorizationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="net\pbt\page\AlbumPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

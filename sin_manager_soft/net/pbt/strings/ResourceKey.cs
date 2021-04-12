@@ -11,10 +11,11 @@
         public const string ARTIST_VIEW_KEY = "artist_view";
         public const string PRODUCT_LIST_NAV_KEY = "product_list_nav";
         public const string WRAPPER_NAV = "wrapper_nav";
-        public const string AUTHORIZATION_KEY = "authorization";
+        public const string AUTHORIZATION_KEY = "authorization_btn";
         public const string CANCEL_KEY = "cancel";
         public const string INPUT_LOGIN_KEY = "input_login";
         public const string INPUT_PASSWORD_KEY = "Input_password";
+        public const string AUTHORIZATION_TITLE_KEY = "authorization_title";
 
         private ResourceKey()
         {

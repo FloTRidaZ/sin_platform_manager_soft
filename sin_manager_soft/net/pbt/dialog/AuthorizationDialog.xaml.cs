@@ -30,6 +30,7 @@ namespace sin_manager_soft.net.pbt.dialog
             _resourceLoader = ResourceLoader.GetForCurrentView();
             PrimaryButtonText = _resourceLoader.GetString(ResourceKey.AUTHORIZATION_KEY);
             SecondaryButtonText = _resourceLoader.GetString(ResourceKey.CANCEL_KEY);
+            Title = _resourceLoader.GetString(ResourceKey.AUTHORIZATION_TITLE_KEY);
         }
 
         private void ContentDialogPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

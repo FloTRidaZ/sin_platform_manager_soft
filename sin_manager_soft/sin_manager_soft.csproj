@@ -120,6 +120,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="net\pbt\essences\PageItem.cs" />
+    <Compile Include="net\pbt\sql\sqlessences\Picture.cs" />
+    <Compile Include="net\pbt\sql\sqlessences\Product.cs" />
+    <Compile Include="net\pbt\sql\sqlessences\ProductType.cs" />
     <Compile Include="net\pbt\page\AlbumPage.xaml.cs">
       <DependentUpon>AlbumPage.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,8 @@
     <Compile Include="net\pbt\page\SongPage.xaml.cs">
       <DependentUpon>SongPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="net\pbt\sql\sqlessences\SINCollection.cs" />
+    <Compile Include="net\pbt\sql\sqlessences\SINCollectionInstances.cs" />
     <Compile Include="net\pbt\strings\ResourceKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -232,9 +237,7 @@
       <Version>2.5.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="net\pbt\sql\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PRIResource Include="ru\strings\Resources.resw" />
   </ItemGroup>

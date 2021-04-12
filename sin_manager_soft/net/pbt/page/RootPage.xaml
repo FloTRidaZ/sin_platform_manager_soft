@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="sin_manager_soft.MainPage"
+    x:Class="sin_manager_soft.net.pbt.page.RootPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:sin_manager_soft"

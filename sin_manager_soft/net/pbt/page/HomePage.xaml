@@ -6,11 +6,32 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:essences="using:sin_manager_soft.net.pbt.essences"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock 
-            Text="Hello to home page"/>
+        <GridView
+            ItemsSource="{x:Bind _gridViewItems}"
+            SelectionMode="None"
+            IsItemClickEnabled="True"
+            ItemClick="GridViewItemClick"
+            ContainerContentChanging="GridViewContainerContentChanging">
+            <GridView.ItemTemplate>
+                <DataTemplate
+                    x:DataType="essences:PageItem">
+                    <RelativePanel
+                        Width="700"
+                        Height="200">
+                        <TextBlock
+                            RelativePanel.AlignVerticalCenterWithPanel="True"
+                            Width="700"
+                            FontSize="30"
+                            TextAlignment="Center"
+                            Text="{x:Bind Header}"/>
+                    </RelativePanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>

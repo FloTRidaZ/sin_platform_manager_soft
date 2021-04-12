@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Microsoft.UI.Xaml.Controls;
+using muxc = Microsoft.UI.Xaml.Controls;
 using Windows.ApplicationModel.Resources;
 using sin_manager_soft.net.pbt.strings;
 
@@ -28,22 +28,32 @@ namespace sin_manager_soft.net.pbt.page
             _resourceLoader = ResourceLoader.GetForCurrentView();
         }
 
-        private void RootTabViewTabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
+        private void TabViewTabCloseRequested(muxc.TabView sender, muxc.TabViewTabCloseRequestedEventArgs args)
         {
             sender.TabItems.Remove(args.Tab);
         }
 
-        private void RootTabViewAddTabButtonClick(TabView sender, object args)
+        private void TabViewAddTabButtonClick(muxc.TabView sender, object args)
         {
-            TabViewItem newTab = new TabViewItem
+            CreateNewTab(sender);
+        }
+
+        private void CreateNewTab(muxc.TabView tabView)
+        {
+            muxc.TabViewItem newTab = new muxc.TabViewItem
             {
                 Header = _resourceLoader.GetString(ResourceKey.HOME_TAB_VIEW_KEY)
             };
             Frame frame = new Frame();
             newTab.Content = frame;
-            frame.Navigate(typeof(HomePage));
-            sender.TabItems.Add(newTab);
-            sender.SelectedItem = newTab;
+            frame.Navigate(typeof(HomePage), tabView);
+            tabView.TabItems.Add(newTab);
+            tabView.SelectedItem = newTab;
+        }
+
+        private void TabViewLoaded(object sender, RoutedEventArgs e)
+        {
+            CreateNewTab(sender as muxc.TabView);
         }
     }
 }

@@ -11,8 +11,9 @@
 
     <Grid>
         <muxc:TabView
-            TabCloseRequested="RootTabViewTabCloseRequested"
-            AddTabButtonClick="RootTabViewAddTabButtonClick">
+            TabCloseRequested="TabViewTabCloseRequested"
+            AddTabButtonClick="TabViewAddTabButtonClick"
+            Loaded="TabViewLoaded">
         </muxc:TabView>
     </Grid>
 </Page>

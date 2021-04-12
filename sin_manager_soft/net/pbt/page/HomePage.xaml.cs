@@ -67,7 +67,7 @@ namespace sin_manager_soft.net.pbt.page
             };
             PageItem editorItem = new PageItem
             {
-                Header = _resourceLoader.GetString(ResourceKey.EDITOR_VIEW_KEY),
+                Header = _resourceLoader.GetString(ResourceKey.EDITOR_KEY),
                 Page = typeof(EditorPage),
                 IsEnabled = false
             };

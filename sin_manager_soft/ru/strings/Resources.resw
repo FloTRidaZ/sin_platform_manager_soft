@@ -123,11 +123,23 @@
   <data name="artist_view" xml:space="preserve">
     <value>Исполнители</value>
   </data>
+  <data name="authorization" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
   <data name="editor" xml:space="preserve">
     <value>Редактор</value>
   </data>
   <data name="home_view" xml:space="preserve">
     <value>Главная</value>
+  </data>
+  <data name="input_login" xml:space="preserve">
+    <value>Введите логин</value>
+  </data>
+  <data name="input_password" xml:space="preserve">
+    <value>Введите пароль</value>
   </data>
   <data name="mail_view" xml:space="preserve">
     <value>Компании доставки</value>

@@ -123,7 +123,7 @@
   <data name="artist_view" xml:space="preserve">
     <value>Исполнители</value>
   </data>
-  <data name="editor_view" xml:space="preserve">
+  <data name="editor" xml:space="preserve">
     <value>Редактор</value>
   </data>
   <data name="home_view" xml:space="preserve">
@@ -132,10 +132,16 @@
   <data name="mail_view" xml:space="preserve">
     <value>Компании доставки</value>
   </data>
+  <data name="product_list_nav" xml:space="preserve">
+    <value>Список</value>
+  </data>
   <data name="product_view" xml:space="preserve">
     <value>Товары</value>
   </data>
   <data name="song_view" xml:space="preserve">
     <value>Музыка</value>
+  </data>
+  <data name="wrapper_nav" xml:space="preserve">
+    <value>Упаковщик</value>
   </data>
 </root>

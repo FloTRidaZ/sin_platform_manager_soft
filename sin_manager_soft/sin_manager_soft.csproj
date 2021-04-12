@@ -135,8 +135,17 @@
     <Compile Include="net\pbt\page\MailServicePage.xaml.cs">
       <DependentUpon>MailServicePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="net\pbt\page\ProductCollectionEditorPage.xaml.cs">
+      <DependentUpon>ProductCollectionEditorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\ProductListPage.xaml.cs">
+      <DependentUpon>ProductListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="net\pbt\page\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\ProductWrapperPage.xaml.cs">
+      <DependentUpon>ProductWrapperPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="net\pbt\page\RootPage.xaml.cs">
       <DependentUpon>RootPage.xaml</DependentUpon>
@@ -187,7 +196,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="net\pbt\page\ProductCollectionEditorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="net\pbt\page\ProductListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="net\pbt\page\ProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="net\pbt\page\ProductWrapperPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

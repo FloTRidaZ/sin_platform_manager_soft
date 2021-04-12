@@ -123,8 +123,11 @@
   <data name="artist_view" xml:space="preserve">
     <value>Исполнители</value>
   </data>
-  <data name="authorization" xml:space="preserve">
+  <data name="authorization_btn" xml:space="preserve">
     <value>Войти</value>
+  </data>
+  <data name="authorization_title" xml:space="preserve">
+    <value>Авторизация</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Отмена</value>

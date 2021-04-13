@@ -5,10 +5,155 @@
     xmlns:local="using:sin_manager_soft.net.pbt.page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer
+            HorizontalScrollMode="Auto"
+            VerticalScrollMode="Auto"
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Auto">
+            <RelativePanel
+                Grid.Row="0"
+                Grid.Column="0">
+                <TextBlock
+                    Name="_productNameTextBlock"
+                    Text="Название товара"
+                    FontSize="20"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignTopWithPanel="True"
+                    Margin="60, 20, 10, 10"/>
+                <TextBox
+                    Name="_productNameInput"
+                    Margin="60, 5, 10, 10"
+                    RelativePanel.Below="_productNameTextBlock"
+                    Width="800"
+                    Height="50"
+                    TextChanged="ProductNameInputTextChanged"
+                    />
+                <TextBlock
+                    Name="_productPriceTextBlock"
+                    Text="Цена товара"
+                    FontSize="20"
+                    RelativePanel.Below="_productNameInput"
+                    Margin="60, 20, 10, 10"/>
+                <TextBox
+                    Name="_productPriceInput"
+                    Margin="60, 5, 10, 10"
+                    Width="800"
+                    RelativePanel.Below="_productPriceTextBlock"
+                    Height="50"
+                    TextChanged="ProductPriceInputTextChanged"
+                    />
+                <TextBlock
+                    Name="_productCountTextBlock"
+                    Text="Количество"
+                    FontSize="20"
+                    RelativePanel.Below="_productPriceInput"
+                    Margin="60, 20, 10, 10"/>
+                <TextBox
+                    Name="_productCountInput"
+                    Margin="60, 5, 10, 10"
+                    Width="800"
+                    RelativePanel.Below="_productCountTextBlock"
+                    Height="50"
+                    TextChanged="ProductCountInputTextChanged"
+                />
+                <TextBlock
+                    Name="_productPicturesTextBlock"
+                    Text="Изображения"
+                    FontSize="20"
+                    RelativePanel.Below="_productCountInput"
+                    Margin="60, 20, 10, 10"/>
+                <StackPanel
+                    Name="_imageFileManagerPanel"
+                    Orientation="Horizontal"
+                    Margin="60, 5, 10, 10"
+                    Width="800"
+                    RelativePanel.Below="_productPicturesTextBlock"
+                    Height="50"
+                    BorderThickness="1, 1, 1, 1"
+                    BorderBrush="Gray">
+                    <TextBlock
+                        Name="_imagesTextBlock"
+                        Width="738"
+                        RelativePanel.Below="_productCountInput"
+                        Height="50"
+                        />
+                    <Button
+                        Background="#FFFFFF"
+                        Height="50"
+                        Width="60"
+                        Click="ImageFileManagerButtonClick">
+                        <Image
+                            Stretch="Fill"
+                            Source="ms-appx:///Assets/folder.png"/>
+                    </Button>
+                </StackPanel>
+                <TextBlock
+                    Name="_productTypesTextBlock"
+                    Text="Категории"
+                    FontSize="20"
+                    RelativePanel.Below="_imageFileManagerPanel"
+                    Margin="60, 20, 10, 10"/>
+                <StackPanel
+                    RelativePanel.Below="_productTypesTextBlock"
+                    Margin="60, 5, 10, 10"
+                    Name="_checkBoxGroup">
+                    
+                </StackPanel>
+                <TextBlock
+                    Name="_productDescriptionTextBlock"
+                    Text="Описание"
+                    FontSize="20"
+                    RelativePanel.Below="_checkBoxGroup"
+                    Margin="60, 20, 10, 10"/>
+                <StackPanel
+                    Name="_descriptionFileManagerPanel"
+                    Orientation="Horizontal"
+                    Margin="60, 5, 10, 10"
+                    Width="800"
+                    RelativePanel.Below="_productDescriptionTextBlock"
+                    Height="50"
+                    BorderThickness="1, 1, 1, 1"
+                    BorderBrush="Gray">
+                        <TextBlock
+                            Name="_descriptionInput"
+                            Width="738"
+                            Height="50"
+                            />
+                        <Button
+                            Click="DescriptionFileManagerBtnClick"
+                            Name="_descriptionFileManagerBtn"
+                            RelativePanel.RightOf="_descriptionInput"
+                            RelativePanel.AlignBottomWith="_descriptionInput"
+                            Background="#FFFFFF"
+                            Height="50"
+                            Width="60">
+                              <Image
+                                 Stretch="Fill"
+                                 Source="ms-appx:///Assets/folder.png"/>
+                        </Button>
+                </StackPanel>
+                <Button
+                    RelativePanel.Below="_descriptionFileManagerPanel"
+                    Background="#FFFFFF"
+                    Content="Сохранить"
+                    BorderBrush="Gray"
+                    BorderThickness="1, 1, 1, 1"
+                    Margin="60, 20, 10, 10"
+                    FontSize="20"
+                    Click="CreateNewProductButtonClick"
+                />
+            </RelativePanel>
+        </ScrollViewer>
     </Grid>
 </Page>

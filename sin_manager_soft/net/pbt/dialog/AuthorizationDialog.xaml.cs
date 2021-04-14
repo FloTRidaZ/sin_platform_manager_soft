@@ -31,17 +31,14 @@ namespace sin_manager_soft.net.pbt.dialog
 
         private void LoginInputLoaded(object sender, RoutedEventArgs e)
         {
-            SetPlaceHolderText(sender as TextBox, ResourceKey.INPUT_LOGIN_KEY);
-        }
-
-        private void SetPlaceHolderText(TextBox textBox, string key)
-        {
-            textBox.PlaceholderText = _resourceLoader.GetString(key);
+            TextBox textBox = sender as TextBox;
+            textBox.PlaceholderText = _resourceLoader.GetString(ResourceKey.INPUT_LOGIN_KEY);
         }
 
         private void PasswordInputLoaded(object sender, RoutedEventArgs e)
         {
-            SetPlaceHolderText(sender as TextBox, ResourceKey.INPUT_PASSWORD_KEY);
+            PasswordBox passwordBox = sender as PasswordBox;
+            passwordBox.PlaceholderText = _resourceLoader.GetString(ResourceKey.INPUT_PASSWORD_KEY);
         }
     }
 }

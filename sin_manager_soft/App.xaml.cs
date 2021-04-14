@@ -1,4 +1,5 @@
 ﻿using sin_manager_soft.net.pbt.page;
+using sin_manager_soft.net.pbt.sql.sqlessences;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;

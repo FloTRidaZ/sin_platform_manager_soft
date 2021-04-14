@@ -16,6 +16,13 @@
         public const string INPUT_LOGIN_KEY = "input_login";
         public const string INPUT_PASSWORD_KEY = "Input_password";
         public const string AUTHORIZATION_TITLE_KEY = "authorization_title";
+        public const string PRODUCT_NAME_KEY = "product_name";
+        public const string PRODUCT_PRICE_KEY = "product_price";
+        public const string PRODUCT_COUNT_KEY = "product_count";
+        public const string PRODUCT_PICTURES_KEY = "product_pictures";
+        public const string PRODUCT_DESCRIPTION_KEY = "product_description";
+        public const string PRODUCT_TYPES_KEY = "product_types";
+        public const string SAVE_BTN_KEY = "save_btn";
 
         private ResourceKey()
         {

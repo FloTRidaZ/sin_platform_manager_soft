@@ -1,5 +1,7 @@
-﻿using System;
+﻿using sin_manager_soft.net.pbt.sql.sqlessences;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -13,18 +15,18 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace sin_manager_soft.net.pbt.page
 {
-    /// <summary>
-    /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
-    /// </summary>
     public sealed partial class ProductListPage : Page
     {
+        private readonly List<Product> _products;
+        private readonly SINCollection _serverInstance;
+
         public ProductListPage()
         {
             this.InitializeComponent();
+            _serverInstance = SINCollection.GetServerCollection();
+            _products = _serverInstance.ProductList;
         }
     }
 }

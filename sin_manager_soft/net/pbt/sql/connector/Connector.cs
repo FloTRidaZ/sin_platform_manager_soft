@@ -51,6 +51,19 @@ namespace sin_manager_soft.net.pbt.sql.connector
         {
             List<ProductType> productTypes = _connection.Query<ProductType>(Query.GET_FROM_PRODUCT_TYPE_VIEW).AsList<ProductType>();
             _serverInstance.ProductTypes.AddRange(productTypes);
+            List<Product> products = _connection.Query<Product>(Query.GET_PRODUCT_LIST).AsList<Product>();
+            foreach (Product product in products)
+            {
+                product.Description = _connection.QuerySingle<SINFile>(Query.GET_DESCRIPTION, new { id = product.Id });
+                product.Pictures = _connection.Query<SINFile>(Query.GET_PRODUCT_PICTURES, new { id = product.Id }).AsList<SINFile>();
+                List<int> typeIDList = _connection.Query<int>(Query.GET_PRODUCT_TYPE, new { id = product.Id }).AsList<int>();
+                product.ProductTypes = new List<ProductType>();
+                foreach (int id in typeIDList)
+                {
+                    product.ProductTypes.Add(productTypes.Find(type => type.Id == id));
+                }
+            }
+            _serverInstance.ProductList.AddRange(products);
         }
 
         public void SendToServer()
@@ -64,7 +77,7 @@ namespace sin_manager_soft.net.pbt.sql.connector
                 {
                     streamId = product.Description.StreamId,
                     name = product.Description.Name,
-                    content = product.Description.Content
+                    content = product.Description.FileStream
                 };
                 var prodParam = new
                 {
@@ -82,7 +95,7 @@ namespace sin_manager_soft.net.pbt.sql.connector
                     {
                         streamId = picture.StreamId,
                         name = picture.Name,
-                        content = picture.Content
+                        content = picture.FileStream
                     };
                     _connection.Query(Query.ADD_PICTURE, pictureParam);
                     _connection.Query(Query.SET_PRODUCT_PICTURE, new { productId = product.Id, pictureId = picture.StreamId });

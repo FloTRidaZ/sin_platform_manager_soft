@@ -55,7 +55,7 @@ namespace sin_manager_soft.net.pbt.page
                     SINFile picture = new SINFile
                     {
                         Name = file.Name,
-                        Content = await GetBytes(file),
+                        FileStream = await GetBytes(file),
                         StreamId = Guid.NewGuid()
                     };
                     _pictures.Add(picture);
@@ -87,7 +87,7 @@ namespace sin_manager_soft.net.pbt.page
             _descriptionFile = new SINFile
             {
                 Name = file.Name,
-                Content = await GetBytes(file),
+                FileStream = await GetBytes(file),
                 StreamId = Guid.NewGuid()
             };
             _descriptionInput.Text = file.Name;

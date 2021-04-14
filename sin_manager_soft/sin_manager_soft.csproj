@@ -123,7 +123,9 @@
       <DependentUpon>AuthorizationDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="net\pbt\essences\PageItem.cs" />
-    <Compile Include="net\pbt\sql\sqlessences\Picture.cs" />
+    <Compile Include="net\pbt\sql\connector\Connector.cs" />
+    <Compile Include="net\pbt\sql\connector\Query.cs" />
+    <Compile Include="net\pbt\sql\sqlessences\SINFile.cs" />
     <Compile Include="net\pbt\sql\sqlessences\Product.cs" />
     <Compile Include="net\pbt\sql\sqlessences\ProductType.cs" />
     <Compile Include="net\pbt\page\AlbumPage.xaml.cs">

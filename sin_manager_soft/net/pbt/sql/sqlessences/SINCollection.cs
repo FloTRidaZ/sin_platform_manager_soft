@@ -11,6 +11,7 @@ namespace sin_manager_soft.net.pbt.sql.sqlessences
         private static Dictionary<SINCollectionInstances, SINCollection> _instances;
 
         public List<Product> ProductList { get; }
+        public List<ProductType> ProductTypes { get; }
 
         public static void CreateInstances()
         {
@@ -38,6 +39,7 @@ namespace sin_manager_soft.net.pbt.sql.sqlessences
         private SINCollection()
         {
             ProductList = new List<Product>();
+            ProductTypes = new List<ProductType>();
         }
     }
 }

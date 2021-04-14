@@ -2,9 +2,10 @@
 
 namespace sin_manager_soft.net.pbt.sql.sqlessences
 {
-    public sealed class ProductType
+    public sealed class SINFile
     {
-        public int Id { get; set; }
         public string Name { get; set; }
+        public byte[] Content { get; set; }
+        public Guid StreamId { get; set; }
     }
 }

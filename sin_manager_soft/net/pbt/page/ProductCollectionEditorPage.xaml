@@ -26,11 +26,11 @@
                 Grid.Column="0">
                 <TextBlock
                     Name="_productNameTextBlock"
-                    Text="Название товара"
                     FontSize="20"
                     RelativePanel.AlignLeftWithPanel="True"
                     RelativePanel.AlignTopWithPanel="True"
-                    Margin="60, 20, 10, 10"/>
+                    Margin="60, 20, 10, 10"
+                    Loaded="ProductNameTextBlockLoaded"/>
                 <TextBox
                     Name="_productNameInput"
                     Margin="60, 5, 10, 10"
@@ -41,10 +41,10 @@
                     />
                 <TextBlock
                     Name="_productPriceTextBlock"
-                    Text="Цена товара"
                     FontSize="20"
                     RelativePanel.Below="_productNameInput"
-                    Margin="60, 20, 10, 10"/>
+                    Margin="60, 20, 10, 10"
+                    Loaded="ProductPriceTextBlockLoaded"/>
                 <TextBox
                     Name="_productPriceInput"
                     Margin="60, 5, 10, 10"
@@ -55,10 +55,10 @@
                     />
                 <TextBlock
                     Name="_productCountTextBlock"
-                    Text="Количество"
                     FontSize="20"
                     RelativePanel.Below="_productPriceInput"
-                    Margin="60, 20, 10, 10"/>
+                    Margin="60, 20, 10, 10"
+                    Loaded="ProductCountTextBlockLoaded"/>
                 <TextBox
                     Name="_productCountInput"
                     Margin="60, 5, 10, 10"
@@ -69,10 +69,10 @@
                 />
                 <TextBlock
                     Name="_productPicturesTextBlock"
-                    Text="Изображения"
                     FontSize="20"
                     RelativePanel.Below="_productCountInput"
-                    Margin="60, 20, 10, 10"/>
+                    Margin="60, 20, 10, 10"
+                    Loaded="ProductPicturesTextBlockLoaded"/>
                 <StackPanel
                     Name="_imageFileManagerPanel"
                     Orientation="Horizontal"
@@ -100,22 +100,23 @@
                 </StackPanel>
                 <TextBlock
                     Name="_productTypesTextBlock"
-                    Text="Категории"
                     FontSize="20"
                     RelativePanel.Below="_imageFileManagerPanel"
-                    Margin="60, 20, 10, 10"/>
+                    Margin="60, 20, 10, 10"
+                    Loaded="ProductTypesTextBlockLoaded"/>
                 <StackPanel
                     RelativePanel.Below="_productTypesTextBlock"
                     Margin="60, 5, 10, 10"
-                    Name="_checkBoxGroup">
+                    Name="_checkBoxGroup"
+                    Loaded="CheckBoxGroupLoaded">
                     
                 </StackPanel>
                 <TextBlock
                     Name="_productDescriptionTextBlock"
-                    Text="Описание"
                     FontSize="20"
                     RelativePanel.Below="_checkBoxGroup"
-                    Margin="60, 20, 10, 10"/>
+                    Margin="60, 20, 10, 10"
+                    Loaded="ProductDescriptionTextBlockLoaded"/>
                 <StackPanel
                     Name="_descriptionFileManagerPanel"
                     Orientation="Horizontal"
@@ -146,13 +147,13 @@
                 <Button
                     RelativePanel.Below="_descriptionFileManagerPanel"
                     Background="#FFFFFF"
-                    Content="Сохранить"
                     BorderBrush="Gray"
                     BorderThickness="1, 1, 1, 1"
                     Margin="60, 20, 10, 10"
                     FontSize="20"
                     Click="CreateNewProductButtonClick"
-                />
+                    Loaded="ButtonSaveLoaded"
+                    />
             </RelativePanel>
         </ScrollViewer>
     </Grid>

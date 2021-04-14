@@ -1,31 +1,27 @@
-﻿using sin_manager_soft.net.pbt.sql.sqlessences;
+﻿using sin_manager_soft.net.pbt.sql.connector;
+using sin_manager_soft.net.pbt.sql.sqlessences;
+using sin_manager_soft.net.pbt.strings;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.ApplicationModel.Resources;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace sin_manager_soft.net.pbt.page
 {
     public sealed partial class ProductCollectionEditorPage : Page
     {
-        private readonly List<Picture> _pictures;
+        private readonly List<SINFile> _pictures;
         private readonly List<ProductType> _productTypes;
-        private byte[] _descriptionFile;
+        private readonly ResourceLoader _resourceLoader;
+        private readonly SINCollection _localInstance;
+        private readonly SINCollection _serverInstance;
+        private SINFile _descriptionFile;
         private string _name;
         private int _count;
         private int _price;
@@ -33,8 +29,11 @@ namespace sin_manager_soft.net.pbt.page
         public ProductCollectionEditorPage()
         {
             this.InitializeComponent();
-            _pictures = new List<Picture>();
+            _pictures = new List<SINFile>();
             _productTypes = new List<ProductType>();
+            _localInstance = SINCollection.GetLocalCollection();
+            _serverInstance = SINCollection.GetServerCollection();
+            _resourceLoader = ResourceLoader.GetForCurrentView();
         }
 
         private async void ImageFileManagerButtonClick(object sender, RoutedEventArgs e)
@@ -53,10 +52,11 @@ namespace sin_manager_soft.net.pbt.page
                 foreach (StorageFile file in files)
                 {
                     fileNames.Append(file.Name + ", ");
-                    Picture picture = new Picture
+                    SINFile picture = new SINFile
                     {
                         Name = file.Name,
-                        Content = await GetBytes(file)
+                        Content = await GetBytes(file),
+                        StreamId = Guid.NewGuid()
                     };
                     _pictures.Add(picture);
                 }
@@ -83,7 +83,13 @@ namespace sin_manager_soft.net.pbt.page
             };
             picker.FileTypeFilter.Add(".txt");
             StorageFile file = await picker.PickSingleFileAsync();
-            _descriptionFile = await GetBytes(file);
+
+            _descriptionFile = new SINFile
+            {
+                Name = file.Name,
+                Content = await GetBytes(file),
+                StreamId = Guid.NewGuid()
+            };
             _descriptionInput.Text = file.Name;
         }
 
@@ -114,6 +120,79 @@ namespace sin_manager_soft.net.pbt.page
                 Description = _descriptionFile,
                 ProductTypes = _productTypes
             };
+            _localInstance.ProductList.Add(product);
+            Connector.GetInstance().SendToServer();
+        }
+
+        private void ProductNameTextBlockLoaded(object sender, RoutedEventArgs e)
+        {
+            SetContent(sender as TextBlock, ResourceKey.PRODUCT_NAME_KEY);
+        }
+
+        private void ProductPriceTextBlockLoaded(object sender, RoutedEventArgs e)
+        {
+            SetContent(sender as TextBlock, ResourceKey.PRODUCT_PRICE_KEY);
+        }
+
+        private void ProductCountTextBlockLoaded(object sender, RoutedEventArgs e)
+        {
+            SetContent(sender as TextBlock, ResourceKey.PRODUCT_COUNT_KEY);
+        }
+
+        private void ProductPicturesTextBlockLoaded(object sender, RoutedEventArgs e)
+        {
+            SetContent(sender as TextBlock, ResourceKey.PRODUCT_PICTURES_KEY);
+        }
+
+        private void ProductTypesTextBlockLoaded(object sender, RoutedEventArgs e)
+        {
+            SetContent(sender as TextBlock, ResourceKey.PRODUCT_TYPES_KEY);
+        }
+
+        private void ProductDescriptionTextBlockLoaded(object sender, RoutedEventArgs e)
+        {
+            SetContent(sender as TextBlock, ResourceKey.PRODUCT_DESCRIPTION_KEY);
+        }
+
+        private void ButtonSaveLoaded(object sender, RoutedEventArgs e)
+        {
+            SetContent(sender as Button, ResourceKey.SAVE_BTN_KEY);
+        }
+
+        private void SetContent(TextBlock textBlock, string key)
+        {
+            textBlock.Text = _resourceLoader.GetString(key);
+        }
+
+        private void SetContent(Button btn, string key)
+        {
+            btn.Content = _resourceLoader.GetString(key);
+        }
+
+        private void CheckBoxGroupLoaded(object sender, RoutedEventArgs e)
+        {
+            List<ProductType> temp = _serverInstance.ProductTypes;
+            foreach (ProductType type in temp)
+            {
+                CheckBox checkBox = new CheckBox
+                {
+                    Content = type.Name,
+                    DataContext = type
+                };
+                checkBox.Click += ProductTypeCheckBoxClick;
+                _checkBoxGroup.Children.Add(checkBox);
+            }
+        }
+
+        private void ProductTypeCheckBoxClick(object sender, RoutedEventArgs e)
+        {
+            CheckBox instance = sender as CheckBox;
+            if (instance.IsChecked == true)
+            {
+                _productTypes.Add(instance.DataContext as ProductType);
+                return;
+            }
+            _productTypes.Remove(instance.DataContext as ProductType);
         }
     }
 }

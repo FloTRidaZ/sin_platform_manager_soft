@@ -147,11 +147,32 @@
   <data name="mail_view" xml:space="preserve">
     <value>Компании доставки</value>
   </data>
+  <data name="product_count" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="product_description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
   <data name="product_list_nav" xml:space="preserve">
     <value>Список</value>
   </data>
+  <data name="product_name" xml:space="preserve">
+    <value>Название товара</value>
+  </data>
+  <data name="product_pictures" xml:space="preserve">
+    <value>Изображения</value>
+  </data>
+  <data name="product_price" xml:space="preserve">
+    <value>Цена товара</value>
+  </data>
+  <data name="product_types" xml:space="preserve">
+    <value>Категории</value>
+  </data>
   <data name="product_view" xml:space="preserve">
     <value>Товары</value>
+  </data>
+  <data name="save_btn" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
   <data name="song_view" xml:space="preserve">
     <value>Музыка</value>

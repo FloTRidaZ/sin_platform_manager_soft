@@ -18,7 +18,8 @@
             <TextBox
                 x:Name="_passwordInput"
                 Loaded="PasswordInputLoaded"
-                Margin="0, 10, 0, 0"/>
+                Margin="0, 10, 0, 0"
+                InputScope="Password"/>
         </StackPanel>
     </Grid>
 </ContentDialog>

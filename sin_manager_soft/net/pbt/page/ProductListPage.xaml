@@ -5,10 +5,22 @@
     xmlns:local="using:sin_manager_soft.net.pbt.page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sqlessences="using:sin_manager_soft.net.pbt.sql.sqlessences"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <GridView
+            ItemsSource="{x:Bind _products}">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="sqlessences:Product">
+                    <StackPanel>
+                        <TextBlock Text="{x:Bind Name}"/>
+                        <TextBlock Text="{x:Bind Price}"/>
+                        <TextBlock Text="{x:Bind Count}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>

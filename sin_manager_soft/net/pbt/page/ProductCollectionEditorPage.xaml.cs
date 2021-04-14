@@ -3,6 +3,7 @@ using sin_manager_soft.net.pbt.sql.sqlessences;
 using sin_manager_soft.net.pbt.strings;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
@@ -16,11 +17,11 @@ namespace sin_manager_soft.net.pbt.page
 {
     public sealed partial class ProductCollectionEditorPage : Page
     {
-        private readonly List<SINFile> _pictures;
         private readonly List<ProductType> _productTypes;
         private readonly ResourceLoader _resourceLoader;
         private readonly SINCollection _localInstance;
         private readonly SINCollection _serverInstance;
+        private readonly ObservableCollection<SINFile> _observablePictures;
         private SINFile _descriptionFile;
         private string _name;
         private int _count;
@@ -29,11 +30,11 @@ namespace sin_manager_soft.net.pbt.page
         public ProductCollectionEditorPage()
         {
             this.InitializeComponent();
-            _pictures = new List<SINFile>();
             _productTypes = new List<ProductType>();
             _localInstance = SINCollection.GetLocalCollection();
             _serverInstance = SINCollection.GetServerCollection();
             _resourceLoader = ResourceLoader.GetForCurrentView();
+            _observablePictures = new ObservableCollection<SINFile>();
         }
 
         private async void ImageFileManagerButtonClick(object sender, RoutedEventArgs e)
@@ -58,9 +59,8 @@ namespace sin_manager_soft.net.pbt.page
                         FileStream = await GetBytes(file),
                         StreamId = Guid.NewGuid()
                     };
-                    _pictures.Add(picture);
+                    _observablePictures.Add(picture);
                 }
-                _imagesTextBlock.Text = fileNames.ToString();
             }
         }
 
@@ -90,7 +90,8 @@ namespace sin_manager_soft.net.pbt.page
                 FileStream = await GetBytes(file),
                 StreamId = Guid.NewGuid()
             };
-            _descriptionInput.Text = file.Name;
+            _deleteDescriptionBtn.Visibility = Visibility.Visible;
+            _descriptionFileNameTextBlock.Text = file.Name;
         }
 
         private void ProductNameInputTextChanged(object sender, TextChangedEventArgs e)
@@ -116,7 +117,7 @@ namespace sin_manager_soft.net.pbt.page
                 Name = _name,
                 Price = _price,
                 Count = _count,
-                Pictures = _pictures,
+                Pictures = new List<SINFile>(_observablePictures),
                 Description = _descriptionFile,
                 ProductTypes = _productTypes
             };
@@ -193,6 +194,28 @@ namespace sin_manager_soft.net.pbt.page
                 return;
             }
             _productTypes.Remove(instance.DataContext as ProductType);
+        }
+
+        private void RemovePictureBtnClick(object sender, RoutedEventArgs e)
+        {
+            Button instance = sender as Button;
+            Guid pictureId = (Guid) instance.DataContext;
+            foreach (SINFile picture in _observablePictures)
+            {
+                if (picture.StreamId == pictureId)
+                {
+                    _observablePictures.Remove(picture);
+                    break;
+                }
+            }
+        }
+
+        private void DeleteDescriptionBtnClick(object sender, RoutedEventArgs e)
+        {
+            Button instance = sender as Button;
+            _descriptionFile = null;
+            instance.Visibility = Visibility.Collapsed;
+            _descriptionFileNameTextBlock.Text = "";
         }
     }
 }

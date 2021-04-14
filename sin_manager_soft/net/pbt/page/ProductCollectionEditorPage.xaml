@@ -5,7 +5,7 @@
     xmlns:local="using:sin_manager_soft.net.pbt.page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:sqlessences="using:sin_manager_soft.net.pbt.sql.sqlessences"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -67,28 +67,22 @@
                     Height="50"
                     TextChanged="ProductCountInputTextChanged"
                 />
-                <TextBlock
-                    Name="_productPicturesTextBlock"
-                    FontSize="20"
-                    RelativePanel.Below="_productCountInput"
-                    Margin="60, 20, 10, 10"
-                    Loaded="ProductPicturesTextBlockLoaded"/>
-                <StackPanel
+                <RelativePanel
                     Name="_imageFileManagerPanel"
-                    Orientation="Horizontal"
                     Margin="60, 5, 10, 10"
-                    Width="800"
-                    RelativePanel.Below="_productPicturesTextBlock"
-                    Height="50"
+                    RelativePanel.Below="_productCountInput"
                     BorderThickness="1, 1, 1, 1"
                     BorderBrush="Gray">
                     <TextBlock
-                        Name="_imagesTextBlock"
-                        Width="738"
-                        RelativePanel.Below="_productCountInput"
-                        Height="50"
-                        />
+                        RelativePanel.AlignTopWithPanel="True"
+                        Name="_productPicturesTextBlock"
+                        Text="Выберите файлы"
+                        Margin="10, 0, 10, 0"
+                        FontSize="20"
+                        Loaded="ProductPicturesTextBlockLoaded"/>
                     <Button
+                        RelativePanel.RightOf="_productPicturesTextBlock"
+                        Name="_imageFileManagerBtn"
                         Background="#FFFFFF"
                         Height="50"
                         Width="60"
@@ -97,7 +91,39 @@
                             Stretch="Fill"
                             Source="ms-appx:///Assets/folder.png"/>
                     </Button>
-                </StackPanel>
+                    <ListView
+                        SelectionMode="None"
+                        RelativePanel.Below="_imageFileManagerBtn"
+                        ItemsSource="{x:Bind _observablePictures}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsStackPanel
+                                    Orientation="Horizontal"
+                                    />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="sqlessences:SINFile">
+                                <StackPanel
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        FontSize="20"
+                                        Text="{x:Bind Name}"/>
+                                    <Button
+                                        Background="White"
+                                        DataContext="{x:Bind StreamId}"
+                                        Click="RemovePictureBtnClick"
+                                        Width="40"
+                                        Height="35">
+                                        <Image
+                                            Stretch="Fill"
+                                            Source="ms-appx:///Assets/close_btn.png"/>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </RelativePanel>
                 <TextBlock
                     Name="_productTypesTextBlock"
                     FontSize="20"
@@ -109,40 +135,45 @@
                     Margin="60, 5, 10, 10"
                     Name="_checkBoxGroup"
                     Loaded="CheckBoxGroupLoaded">
-                    
+
                 </StackPanel>
-                <TextBlock
-                    Name="_productDescriptionTextBlock"
-                    FontSize="20"
-                    RelativePanel.Below="_checkBoxGroup"
-                    Margin="60, 20, 10, 10"
-                    Loaded="ProductDescriptionTextBlockLoaded"/>
                 <StackPanel
-                    Name="_descriptionFileManagerPanel"
                     Orientation="Horizontal"
+                    Name="_descriptionFileManagerPanel"
                     Margin="60, 5, 10, 10"
-                    Width="800"
-                    RelativePanel.Below="_productDescriptionTextBlock"
-                    Height="50"
+                    RelativePanel.Below="_checkBoxGroup"
                     BorderThickness="1, 1, 1, 1"
                     BorderBrush="Gray">
-                        <TextBlock
-                            Name="_descriptionInput"
-                            Width="738"
-                            Height="50"
-                            />
-                        <Button
-                            Click="DescriptionFileManagerBtnClick"
-                            Name="_descriptionFileManagerBtn"
-                            RelativePanel.RightOf="_descriptionInput"
-                            RelativePanel.AlignBottomWith="_descriptionInput"
-                            Background="#FFFFFF"
-                            Height="50"
-                            Width="60">
-                              <Image
-                                 Stretch="Fill"
-                                 Source="ms-appx:///Assets/folder.png"/>
-                        </Button>
+                    <TextBlock
+                        Name="_productDescriptionTextBlock"
+                        FontSize="20"
+                        Margin="10, 0, 10, 0"
+                        Loaded="ProductDescriptionTextBlockLoaded"/>
+                    <Button
+                        Click="DescriptionFileManagerBtnClick"
+                        Name="_descriptionFileManagerBtn"
+                        Background="#FFFFFF"
+                        Height="50"
+                        Width="60">
+                        <Image
+                             Stretch="Fill"
+                             Source="ms-appx:///Assets/folder.png"/>
+                    </Button>
+                    <TextBlock
+                        Name="_descriptionFileNameTextBlock"
+                        FontSize="20"
+                        />
+                    <Button
+                        Name="_deleteDescriptionBtn"
+                        Background="White"
+                        Click="DeleteDescriptionBtnClick"
+                        Width="40"
+                        Visibility="Collapsed"
+                        Height="35">
+                            <Image
+                                Stretch="Fill"
+                                Source="ms-appx:///Assets/close_btn.png"/>
+                    </Button>
                 </StackPanel>
                 <Button
                     RelativePanel.Below="_descriptionFileManagerPanel"

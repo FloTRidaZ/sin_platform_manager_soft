@@ -10,17 +10,34 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <GridView
+        <ListView
+            SelectionMode="None"
+            ContainerContentChanging="ProductListContainerContentChanging"
             ItemsSource="{x:Bind _products}">
-            <GridView.ItemTemplate>
+            <ListView.ItemTemplate>
                 <DataTemplate x:DataType="sqlessences:Product">
                     <StackPanel>
-                        <TextBlock Text="{x:Bind Name}"/>
-                        <TextBlock Text="{x:Bind Price}"/>
-                        <TextBlock Text="{x:Bind Count}"/>
+                        <Image
+                            Opacity="0"
+                            Width="200"
+                            Height="200"/>
+                        <TextBlock
+                            FontSize="20"/>
+                        <TextBlock
+                            FontSize="20"
+                            Opacity="0"/>
+                        <TextBlock
+                            FontSize="20"
+                            Opacity="0"/>
+                        <TextBlock
+                            FontSize="20"
+                            Opacity="0"/>
+                        <TextBlock
+                            FontSize="20"
+                            Opacity="0"/>
                     </StackPanel>
                 </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

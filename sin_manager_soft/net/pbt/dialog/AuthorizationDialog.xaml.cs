@@ -21,7 +21,7 @@ namespace sin_manager_soft.net.pbt.dialog
 
         private void ContentDialogPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            Connector.CreateInstance(_loginInput.Text, _passwordInput.Password);
+            Connector.CreateInstance(LoginInput.Text, PasswordInput.Password);
         }
 
         private void ContentDialogSecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

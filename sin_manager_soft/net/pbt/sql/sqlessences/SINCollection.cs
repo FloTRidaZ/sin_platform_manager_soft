@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace sin_manager_soft.net.pbt.sql.sqlessences
 {
-    public sealed class SINCollection
+    public sealed class SinCollection
     {
-        private static Dictionary<SINCollectionInstances, SINCollection> _instances;
+        private static Dictionary<SinCollectionInstances, SinCollection> _instances;
 
-        public List<Product> ProductList { get; }
-        public List<ProductType> ProductTypes { get; }
+        public ObservableCollection<Product> ProductList { get; set; }
+        public ObservableCollection<ProductType> ProductTypes { get; set; }
+        public ObservableCollection<Artist> ArtistList { get; set; }
+        public ObservableCollection<Album> AlbumList { get; set; }
+        public ObservableCollection<Song> SongList { get; set; }
+        public ObservableCollection<MailService> MailServiceList { get; set; }
 
         public static void CreateInstances()
         {
@@ -19,27 +20,32 @@ namespace sin_manager_soft.net.pbt.sql.sqlessences
             {
                 return;
             }
-            _instances = new Dictionary<SINCollectionInstances, SINCollection>
+
+            _instances = new Dictionary<SinCollectionInstances, SinCollection>
             {
-                { SINCollectionInstances.LOCAL, new SINCollection() },
-                { SINCollectionInstances.SERVER, new SINCollection() }
+                {SinCollectionInstances.LOCAL, new SinCollection()},
+                {SinCollectionInstances.SERVER, new SinCollection()}
             };
         }
 
-        public static SINCollection GetLocalCollection()
+        public static SinCollection GetLocalCollection()
         {
-            return _instances[SINCollectionInstances.LOCAL];
+            return _instances[SinCollectionInstances.LOCAL];
         }
 
-        public static SINCollection GetServerCollection()
+        public static SinCollection GetServerCollection()
         {
-            return _instances[SINCollectionInstances.SERVER];
+            return _instances[SinCollectionInstances.SERVER];
         }
 
-        private SINCollection()
+        private SinCollection()
         {
-            ProductList = new List<Product>();
-            ProductTypes = new List<ProductType>();
+            ProductList = new ObservableCollection<Product>();
+            ProductTypes = new ObservableCollection<ProductType>();
+            ArtistList = new ObservableCollection<Artist>();
+            AlbumList = new ObservableCollection<Album>();
+            SongList = new ObservableCollection<Song>();
+            MailServiceList = new ObservableCollection<MailService>();
         }
     }
 }

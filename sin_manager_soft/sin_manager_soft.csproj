@@ -12,12 +12,18 @@
     <DefaultLanguage>ru</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -123,25 +129,55 @@
       <DependentUpon>AuthorizationDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="net\pbt\essences\PageItem.cs" />
+    <Compile Include="net\pbt\page\AlbumCollectionEditorPage.xaml.cs">
+      <DependentUpon>AlbumCollectionEditorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\AlbumListPage.xaml.cs">
+      <DependentUpon>AlbumListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\AlbumWrapperPage.xaml.cs">
+      <DependentUpon>AlbumWrapperPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\ArtistCollectionEditorPage.xaml.cs">
+      <DependentUpon>ArtistCollectionEditorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\ArtistListPage.xaml.cs">
+      <DependentUpon>ArtistListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\ArtistWrapperPage.xaml.cs">
+      <DependentUpon>ArtistWrapperPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\MailServiceCollectionEditorPage.xaml.cs">
+      <DependentUpon>MailServiceCollectionEditorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\MailServiceListPage.xaml.cs">
+      <DependentUpon>MailServiceListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\MailServiceWrapperPage.xaml.cs">
+      <DependentUpon>MailServiceWrapperPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\SongCollectionEditorPage.xaml.cs">
+      <DependentUpon>SongCollectionEditorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\SongListPage.xaml.cs">
+      <DependentUpon>SongListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="net\pbt\page\SongWrapperPage.xaml.cs">
+      <DependentUpon>SongWrapperPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="net\pbt\sql\connector\Connector.cs" />
     <Compile Include="net\pbt\sql\connector\Query.cs" />
+    <Compile Include="net\pbt\sql\sqlessences\Album.cs" />
+    <Compile Include="net\pbt\sql\sqlessences\Artist.cs" />
+    <Compile Include="net\pbt\sql\sqlessences\MailService.cs" />
     <Compile Include="net\pbt\sql\sqlessences\SINFile.cs" />
     <Compile Include="net\pbt\sql\sqlessences\Product.cs" />
     <Compile Include="net\pbt\sql\sqlessences\ProductType.cs" />
-    <Compile Include="net\pbt\page\AlbumPage.xaml.cs">
-      <DependentUpon>AlbumPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="net\pbt\page\ArtistPage.xaml.cs">
-      <DependentUpon>ArtistPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="net\pbt\page\EditorPage.xaml.cs">
-      <DependentUpon>EditorPage.xaml</DependentUpon>
+    <Compile Include="net\pbt\page\LocalStorePage.xaml.cs">
+      <DependentUpon>LocalStorePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="net\pbt\page\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="net\pbt\page\MailServicePage.xaml.cs">
-      <DependentUpon>MailServicePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="net\pbt\page\ProductCollectionEditorPage.xaml.cs">
       <DependentUpon>ProductCollectionEditorPage.xaml</DependentUpon>
@@ -149,8 +185,8 @@
     <Compile Include="net\pbt\page\ProductListPage.xaml.cs">
       <DependentUpon>ProductListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="net\pbt\page\ProductPage.xaml.cs">
-      <DependentUpon>ProductPage.xaml</DependentUpon>
+    <Compile Include="net\pbt\page\CategoryPage.xaml.cs">
+      <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="net\pbt\page\ProductWrapperPage.xaml.cs">
       <DependentUpon>ProductWrapperPage.xaml</DependentUpon>
@@ -158,12 +194,14 @@
     <Compile Include="net\pbt\page\RootPage.xaml.cs">
       <DependentUpon>RootPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="net\pbt\page\SongPage.xaml.cs">
-      <DependentUpon>SongPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="net\pbt\sql\sqlessences\SINCollection.cs" />
     <Compile Include="net\pbt\sql\sqlessences\SINCollectionInstances.cs" />
+    <Compile Include="net\pbt\sql\sqlessences\Song.cs" />
     <Compile Include="net\pbt\strings\ResourceKey.cs" />
+    <Compile Include="net\pbt\util\Category.cs" />
+    <Compile Include="net\pbt\util\CategoryHeaderSelector.cs" />
+    <Compile Include="net\pbt\util\CategoryNavItemSelector.cs" />
+    <Compile Include="net\pbt\util\StorageFileExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,15 +230,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="net\pbt\page\AlbumPage.xaml">
+    <Page Include="net\pbt\page\AlbumCollectionEditorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="net\pbt\page\ArtistPage.xaml">
+    <Page Include="net\pbt\page\AlbumListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="net\pbt\page\EditorPage.xaml">
+    <Page Include="net\pbt\page\AlbumWrapperPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="net\pbt\page\ArtistCollectionEditorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="net\pbt\page\ArtistListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="net\pbt\page\ArtistWrapperPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="net\pbt\page\LocalStorePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,7 +262,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="net\pbt\page\MailServicePage.xaml">
+    <Page Include="net\pbt\page\MailServiceCollectionEditorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="net\pbt\page\MailServiceListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="net\pbt\page\MailServiceWrapperPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -220,7 +282,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="net\pbt\page\ProductPage.xaml">
+    <Page Include="net\pbt\page\CategoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,7 +294,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="net\pbt\page\SongPage.xaml">
+    <Page Include="net\pbt\page\SongCollectionEditorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="net\pbt\page\SongListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="net\pbt\page\SongWrapperPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

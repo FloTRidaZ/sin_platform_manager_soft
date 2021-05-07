@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="album" xml:space="preserve">
+    <value>Альбом</value>
+  </data>
+  <data name="album_name" xml:space="preserve">
+    <value>Название альбома</value>
+  </data>
+  <data name="album_release_date" xml:space="preserve">
+    <value>Дата релиза</value>
+  </data>
   <data name="album_view" xml:space="preserve">
     <value>Альбомы</value>
+  </data>
+  <data name="artist" xml:space="preserve">
+    <value>Исполнитель</value>
+  </data>
+  <data name="artist_name" xml:space="preserve">
+    <value>Название группы</value>
   </data>
   <data name="artist_view" xml:space="preserve">
     <value>Исполнители</value>
@@ -132,8 +147,17 @@
   <data name="cancel" xml:space="preserve">
     <value>Отмена</value>
   </data>
+  <data name="delivery_price" xml:space="preserve">
+    <value>Цена доставки</value>
+  </data>
+  <data name="description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
   <data name="editor" xml:space="preserve">
     <value>Редактор</value>
+  </data>
+  <data name="file_manager" xml:space="preserve">
+    <value>Выберите файлы</value>
   </data>
   <data name="home_view" xml:space="preserve">
     <value>Главная</value>
@@ -144,23 +168,26 @@
   <data name="input_password" xml:space="preserve">
     <value>Введите пароль</value>
   </data>
+  <data name="local_store" xml:space="preserve">
+    <value>Хранилище</value>
+  </data>
   <data name="mail_view" xml:space="preserve">
     <value>Компании доставки</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="picture" xml:space="preserve">
+    <value>Изображение</value>
+  </data>
+  <data name="predication" xml:space="preserve">
+    <value>Срок доставки</value>
   </data>
   <data name="product_count" xml:space="preserve">
     <value>Количество</value>
   </data>
-  <data name="product_description" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="product_list_nav" xml:space="preserve">
-    <value>Список</value>
-  </data>
   <data name="product_name" xml:space="preserve">
     <value>Название товара</value>
-  </data>
-  <data name="product_pictures" xml:space="preserve">
-    <value>Изображения</value>
   </data>
   <data name="product_price" xml:space="preserve">
     <value>Цена товара</value>
@@ -171,8 +198,26 @@
   <data name="product_view" xml:space="preserve">
     <value>Товары</value>
   </data>
+  <data name="raw_price_str" xml:space="preserve">
+    <value>{0}: {1} руб.</value>
+  </data>
+  <data name="raw_str" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="regions" xml:space="preserve">
+    <value>Регионы</value>
+  </data>
   <data name="save_btn" xml:space="preserve">
     <value>Сохранить</value>
+  </data>
+  <data name="send_btn" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="server_nav" xml:space="preserve">
+    <value>Сервер</value>
+  </data>
+  <data name="song_src" xml:space="preserve">
+    <value>Источник</value>
   </data>
   <data name="song_view" xml:space="preserve">
     <value>Музыка</value>

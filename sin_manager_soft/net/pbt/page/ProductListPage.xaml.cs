@@ -1,35 +1,25 @@
 ﻿using sin_manager_soft.net.pbt.sql.sqlessences;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using Windows.ApplicationModel.Resources;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
+using sin_manager_soft.net.pbt.strings;
 
 namespace sin_manager_soft.net.pbt.page
 {
-    public sealed partial class ProductListPage : Page
+    public sealed partial class ProductListPage
     {
-        private readonly List<Product> _products;
-        private readonly SINCollection _serverInstance;
+        private readonly ObservableCollection<Product> _products;
+        private readonly SinCollection _serverInstance;
         private readonly ResourceLoader _resourceLoader;
 
         public ProductListPage()
         {
             this.InitializeComponent();
-            _serverInstance = SINCollection.GetServerCollection();
+            _serverInstance = SinCollection.GetServerCollection();
             _products = _serverInstance.ProductList;
             _resourceLoader = ResourceLoader.GetForCurrentView();
         }
@@ -40,6 +30,7 @@ namespace sin_manager_soft.net.pbt.page
             {
                 return;
             }
+
             args.RegisterUpdateCallback(BindNameToProduct);
         }
 
@@ -49,10 +40,14 @@ namespace sin_manager_soft.net.pbt.page
             {
                 return;
             }
+
+            string rawStr = _resourceLoader.GetString(ResourceKey.RAW_STR_KEY);
+            string rawProdName = _resourceLoader.GetString(ResourceKey.PROD_NAME_KEY);
             Product product = args.Item as Product;
-            StackPanel parent = args.ItemContainer.ContentTemplateRoot as StackPanel;
+            string prodName = string.Format(rawStr, rawProdName, product.Name);
+            RelativePanel parent = args.ItemContainer.ContentTemplateRoot as RelativePanel;
             TextBlock textBlock = parent.Children[1] as TextBlock;
-            textBlock.Text = product.Name;
+            textBlock.Text = prodName;
             textBlock.Opacity = 1;
             args.RegisterUpdateCallback(BindPriceToProduct);
         }
@@ -63,10 +58,14 @@ namespace sin_manager_soft.net.pbt.page
             {
                 return;
             }
+
+            string rawStr = _resourceLoader.GetString(ResourceKey.RAW_PRICE_STR_KEY);
+            string rawProdPrice = _resourceLoader.GetString(ResourceKey.PROD_PRICE_KEY);
             Product product = args.Item as Product;
-            StackPanel parent = args.ItemContainer.ContentTemplateRoot as StackPanel;
+            string prodPrice = string.Format(rawStr, rawProdPrice, (product.Price / 100));
+            RelativePanel parent = args.ItemContainer.ContentTemplateRoot as RelativePanel;
             TextBlock textBlock = parent.Children[2] as TextBlock;
-            textBlock.Text = (product.Price / 100).ToString();
+            textBlock.Text = prodPrice;
             textBlock.Opacity = 1;
             args.RegisterUpdateCallback(BindCountToProduct);
         }
@@ -77,10 +76,14 @@ namespace sin_manager_soft.net.pbt.page
             {
                 return;
             }
+
+            string rawStr = _resourceLoader.GetString(ResourceKey.RAW_STR_KEY);
+            string rawProdCount = _resourceLoader.GetString(ResourceKey.PROD_COUNT_KEY);
             Product product = args.Item as Product;
-            StackPanel parent = args.ItemContainer.ContentTemplateRoot as StackPanel;
+            string prodCount = string.Format(rawStr, rawProdCount, product.Count);
+            RelativePanel parent = args.ItemContainer.ContentTemplateRoot as RelativePanel;
             TextBlock textBlock = parent.Children[3] as TextBlock;
-            textBlock.Text = product.Count.ToString();
+            textBlock.Text = prodCount;
             textBlock.Opacity = 1;
             args.RegisterUpdateCallback(BindProductEnumToProduct);
         }
@@ -91,15 +94,20 @@ namespace sin_manager_soft.net.pbt.page
             {
                 return;
             }
+
+            string rawStr = _resourceLoader.GetString(ResourceKey.RAW_STR_KEY);
+            string rawProdTypes = _resourceLoader.GetString(ResourceKey.PROD_TYPE_KEY);
             Product product = args.Item as Product;
-            StackPanel parent = args.ItemContainer.ContentTemplateRoot as StackPanel;
+            RelativePanel parent = args.ItemContainer.ContentTemplateRoot as RelativePanel;
             TextBlock textBlock = parent.Children[4] as TextBlock;
             StringBuilder strBuilder = new StringBuilder();
             foreach (ProductType type in product.ProductTypes)
             {
                 strBuilder.Append(type.Name).Append("; ");
             }
-            textBlock.Text = strBuilder.ToString();
+
+            string prodTypes = string.Format(rawStr, rawProdTypes, strBuilder);
+            textBlock.Text = prodTypes;
             textBlock.Opacity = 1;
             args.RegisterUpdateCallback(BindProductDescriptionProduct);
         }
@@ -110,25 +118,28 @@ namespace sin_manager_soft.net.pbt.page
             {
                 return;
             }
+
             Product product = args.Item as Product;
-            StackPanel parent = args.ItemContainer.ContentTemplateRoot as StackPanel;
+            RelativePanel parent = args.ItemContainer.ContentTemplateRoot as RelativePanel;
             TextBlock textBlock = parent.Children[5] as TextBlock;
-            textBlock.Text = Encoding.ASCII.GetString(product.Description.FileStream);
+            textBlock.Text = Encoding.UTF8.GetString(product.Description.FileStream);
             textBlock.Opacity = 1;
-            args.RegisterUpdateCallback(BindPictureToproduct);
+            args.RegisterUpdateCallback(BindPictureToProduct);
         }
 
-        private async void BindPictureToproduct(ListViewBase sender, ContainerContentChangingEventArgs args)
+        private async void BindPictureToProduct(ListViewBase sender, ContainerContentChangingEventArgs args)
         {
             if (args.Phase != 6)
             {
                 return;
             }
+
             Product product = args.Item as Product;
-            StackPanel parent = args.ItemContainer.ContentTemplateRoot as StackPanel;
+            RelativePanel parent = args.ItemContainer.ContentTemplateRoot as RelativePanel;
             Image img = parent.Children[0] as Image;
             BitmapImage bitmap = new BitmapImage();
-            await bitmap.SetSourceAsync(WindowsRuntimeStreamExtensions.AsRandomAccessStream(new MemoryStream(product.Pictures[0].FileStream)));
+            await bitmap.SetSourceAsync(
+                new MemoryStream(product.Pictures[0].FileStream).AsRandomAccessStream());
             img.Source = bitmap;
             img.Opacity = 1;
         }

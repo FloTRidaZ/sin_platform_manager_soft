@@ -9,8 +9,8 @@ namespace sin_manager_soft.net.pbt.sql.sqlessences
         public string Name { get; set; }
         public int Price { get; set; }
         public int Count { get; set; }
-        public SINFile Description { get; set; }
-        public List<SINFile> Pictures { get; set; }
+        public SinFile Description { get; set; }
+        public List<SinFile> Pictures { get; set; }
         public List<ProductType> ProductTypes { get; set; }
     }
 }

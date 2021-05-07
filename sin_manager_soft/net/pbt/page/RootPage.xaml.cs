@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using muxc = Microsoft.UI.Xaml.Controls;
 using Windows.ApplicationModel.Resources;
@@ -19,7 +9,7 @@ using sin_manager_soft.net.pbt.dialog;
 
 namespace sin_manager_soft.net.pbt.page
 {
-    public sealed partial class RootPage : Page
+    public sealed partial class RootPage
     {
         private readonly ResourceLoader _resourceLoader;
 
@@ -57,7 +47,7 @@ namespace sin_manager_soft.net.pbt.page
             CreateNewTab(sender as muxc.TabView);
         }
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             AuthorizationDialog dialog = new AuthorizationDialog();

@@ -2,36 +2,80 @@
     x:Class="sin_manager_soft.net.pbt.page.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:sin_manager_soft.net.pbt.page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:essences="using:sin_manager_soft.net.pbt.essences"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <GridView
-            ItemsSource="{x:Bind _gridViewItems}"
-            SelectionMode="None"
-            IsItemClickEnabled="True"
-            ItemClick="GridViewItemClick"
-            ContainerContentChanging="GridViewContainerContentChanging">
-            <GridView.ItemTemplate>
-                <DataTemplate
-                    x:DataType="essences:PageItem">
-                    <RelativePanel
-                        Width="700"
-                        Height="200">
-                        <TextBlock
-                            RelativePanel.AlignVerticalCenterWithPanel="True"
-                            Width="700"
-                            FontSize="30"
-                            TextAlignment="Center"
-                            Text="{x:Bind Header}"/>
-                    </RelativePanel>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="0.3*" />
+            <RowDefinition
+                Height="0.3*" />
+            <RowDefinition
+                Height="0.3*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="0.5*" />
+            <ColumnDefinition
+                Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <Button
+            Grid.Column="0"
+            Grid.Row="0"
+            Background="White"
+            FontSize="48"
+            Click="OnCategoryBtnClick"
+            Loaded="OnAlbumBtnLoaded"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch" />
+        <Button
+            Grid.Column="1"
+            Grid.Row="0"
+            Background="White"
+            FontSize="48"
+            Click="OnCategoryBtnClick"
+            Loaded="OnArtistBtnLoaded"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch" />
+        <Button
+            Grid.Column="0"
+            Grid.Row="1"
+            Background="White"
+            FontSize="48"
+            Click="OnCategoryBtnClick"
+            Loaded="OnSongBtnLoaded"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch" />
+        <Button
+            Grid.Column="1"
+            Grid.Row="1"
+            Background="White"
+            FontSize="48"
+            Click="OnCategoryBtnClick"
+            Loaded="OnProductBtnLoaded"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch" />
+        <Button
+            Grid.Column="0"
+            Grid.Row="2"
+            Background="White"
+            FontSize="48"
+            Click="OnCategoryBtnClick"
+            Loaded="OnMailServiceBtnLoaded"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch" />
+        <Button
+            Grid.Column="1"
+            Grid.Row="2"
+            Background="White"
+            FontSize="48"
+            Click="OnEditorBtnClick"
+            Loaded="OnEditorBtnLoaded"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch" />
     </Grid>
 </Page>

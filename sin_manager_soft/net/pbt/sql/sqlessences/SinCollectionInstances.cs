@@ -1,6 +1,6 @@
 ﻿namespace sin_manager_soft.net.pbt.sql.sqlessences
 {
-    public enum SINCollectionInstances
+    public enum SinCollectionInstances
     {
         LOCAL,
         SERVER

@@ -7,7 +7,7 @@ using sin_manager_soft.net.pbt.sql.connector;
 
 namespace sin_manager_soft.net.pbt.dialog
 {
-    public sealed partial class AuthorizationDialog : ContentDialog
+    public sealed partial class AuthorizationDialog
     {
         private readonly ResourceLoader _resourceLoader;
         public AuthorizationDialog()
@@ -22,6 +22,7 @@ namespace sin_manager_soft.net.pbt.dialog
         private void ContentDialogPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             Connector.CreateInstance(LoginInput.Text, PasswordInput.Password);
+            Connector.GetInstance().Connect();
         }
 
         private void ContentDialogSecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

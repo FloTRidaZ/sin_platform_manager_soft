@@ -166,7 +166,14 @@
       <DependentUpon>SongWrapperPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="net\pbt\sql\connector\Connector.cs" />
+    <Compile Include="net\pbt\sql\connector\IDBConnector.cs" />
     <Compile Include="net\pbt\sql\connector\Query.cs" />
+    <Compile Include="net\pbt\sql\dao\AlbumDao.cs" />
+    <Compile Include="net\pbt\sql\dao\ArtistDao.cs" />
+    <Compile Include="net\pbt\sql\dao\Dao.cs" />
+    <Compile Include="net\pbt\sql\dao\MailServiceDao.cs" />
+    <Compile Include="net\pbt\sql\dao\ProductDao.cs" />
+    <Compile Include="net\pbt\sql\dao\SongDao.cs" />
     <Compile Include="net\pbt\sql\sqlessences\Album.cs" />
     <Compile Include="net\pbt\sql\sqlessences\Artist.cs" />
     <Compile Include="net\pbt\sql\sqlessences\MailService.cs" />
@@ -201,7 +208,10 @@
     <Compile Include="net\pbt\util\Category.cs" />
     <Compile Include="net\pbt\util\CategoryHeaderSelector.cs" />
     <Compile Include="net\pbt\util\CategoryNavItemSelector.cs" />
+    <Compile Include="net\pbt\util\DigitQC.cs" />
+    <Compile Include="net\pbt\util\IInputQC.cs" />
     <Compile Include="net\pbt\util\StorageFileExtension.cs" />
+    <Compile Include="net\pbt\util\TextQC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

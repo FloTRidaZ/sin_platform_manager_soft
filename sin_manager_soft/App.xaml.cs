@@ -1,20 +1,21 @@
 ﻿using sin_manager_soft.net.pbt.page;
-using sin_manager_soft.net.pbt.sql.sqlessences;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using sin_manager_soft.net.pbt.sql.sqlessences;
 
 namespace sin_manager_soft
 {
-    sealed partial class App : Application
+    sealed partial class App
     {
         public App()
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            SinCollection.CreateInstances();
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs e)
@@ -28,24 +29,23 @@ namespace sin_manager_soft
                 Window.Current.Content = rootFrame;
             }
 
-            if (e.PrelaunchActivated == false)
+            if (e.PrelaunchActivated) return;
+            if (rootFrame.Content == null)
             {
-                if (rootFrame.Content == null)
-                {
-                    rootFrame.Navigate(typeof(RootPage), e.Arguments);
-                }
-                Window.Current.Activate();
+                rootFrame.Navigate(typeof(RootPage), e.Arguments);
             }
+
+            Window.Current.Activate();
         }
 
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
-            var deferral = e.SuspendingOperation.GetDeferral();
+            SuspendingDeferral deferral = e.SuspendingOperation.GetDeferral();
             deferral.Complete();
         }
     }
